@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""[summary]"""
+"""Console module for the AirBnB clone"""
 import cmd
 import models
 
