@@ -30,10 +30,12 @@ class BaseModel:
 
     def __str__(self):
         """Return a string representation of the BaseModel class"""
-        return "[{}] ({}) {}".format(self.__class__.__name__, self.id, self.__dict__)
+        return "[{}] ({}) {}".format(
+            self.__class__.__name__, self.id, self.__dict__)
 
     def save(self):
-        """Update the public instance attribute updated_at to current datetime"""
+        """Update the public instance attribute
+        updated_at to current datetime"""
         self.updated_at = datetime.now()
         models.storage.save()
 

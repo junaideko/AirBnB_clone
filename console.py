@@ -93,7 +93,8 @@ class HBNBCommand(cmd.Cmd):
                 print(e)
 
     def do_all(self, arg):
-        """Prints all string representation of all instances based or not on the class name
+        """Prints all string representation of all
+        instances based or not on the class name
         """
         if arg == "":
             print([x.__str__() for x in models.storage.all().values()])
@@ -112,7 +113,8 @@ class HBNBCommand(cmd.Cmd):
                 print(e)
 
     def do_update(self, arg):
-        """Updates an instance based on the class name and id (save the change into the JSON file)
+        """Updates an instance based on the
+        class name and id (save the change into the JSON file)
 
         Usage: update <class name> <id> <attribute name> "<attribute value>"
         """
