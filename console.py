@@ -5,6 +5,7 @@
 import cmd
 import json
 import shlex
+import models
 from models.engine.file_storage import FileStorage
 from models.base_model import BaseModel
 from models.user import User
@@ -118,13 +119,12 @@ class HBNBCommand(cmd.Cmd):
             try:
                 model = models.classes[arg]
                 resp = []
-                for l in models.storage.all().values():
-                    if type(l) == model:
+                for listClass in models.storage.all().values():
+                    if type(listClass) == model:
                         resp.append(l.__str__())
                 print(resp)
             except Exception as e:
                 print(e)
-
 
     def do_update(self, args):
         """
