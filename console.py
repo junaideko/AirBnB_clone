@@ -19,7 +19,7 @@ class HBNBCommand(cmd.Cmd):
     """
         Contains the entry point of the command interpreter.
     """
-
+    intro = 'Welcome to the Airbnb console. Type help or ? to list commands.\n'
     prompt = "(hbnb) "
 
     def do_quit(self, args):
@@ -107,29 +107,24 @@ class HBNBCommand(cmd.Cmd):
             print("** no instance found **")
         storage.save()
 
-    def do_all(self, args):
+    def do_all(self, arg):
         """
-            Prints all string representation of all instances
-            based or not on the class name.
+        Prints all string representation of all instances
+        based or not on the class name.
         """
-        obj_list = []
-        storage = FileStorage()
-        storage.reload()
-        objects = storage.all()
-        try:
-            if len(args) != 0:
-                eval(args)
-        except NameError:
-            print("** class doesn't exist **")
-            return
-        for key, val in objects.items():
-            if len(args) != 0:
-                if type(val) is eval(args):
-                    obj_list.append(val)
-            else:
-                obj_list.append(val)
+        if arg == "":
+            print([x.__str__() for x in models.storage.all().values()])
+        else:
+            try:
+                model = models.classes[arg]
+                resp = []
+                for l in models.storage.all().values():
+                    if type(l) == model:
+                        resp.append(l.__str__())
+                print(resp)
+            except Exception as e:
+                print(e)
 
-        print(obj_list)
 
     def do_update(self, args):
         """
