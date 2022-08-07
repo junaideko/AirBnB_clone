@@ -121,7 +121,7 @@ class HBNBCommand(cmd.Cmd):
                 resp = []
                 for listClass in models.storage.all().values():
                     if type(listClass) == model:
-                        resp.append(l.__str__())
+                        resp.append(listClass.__str__())
                 print(resp)
             except Exception as e:
                 print(e)
