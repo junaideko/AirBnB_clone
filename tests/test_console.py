@@ -116,7 +116,7 @@ class TestConsole(unittest.TestCase):
                              fake_output.getvalue())
         with patch('sys.stdout', new=StringIO()) as fake_output:
             self.typing.onecmd("destroy BaseModel 12345")
-            self.assertEqual("** no instance found **\n",
+            self.assertEqual("** no instance **\n",
                              fake_output.getvalue())
         with patch('sys.stdout', new=StringIO()) as fake_output:
             self.typing.onecmd("City.destroy('123')")
@@ -127,7 +127,7 @@ class TestConsole(unittest.TestCase):
         """Test cmd output: update"""
         with patch('sys.stdout', new=StringIO()) as fake_output:
             self.typing.onecmd("update")
-            self.assertEqual("** class name missing **\n",
+            self.assertEqual("** class doesn't exist **\n",
                              fake_output.getvalue())
         with patch('sys.stdout', new=StringIO()) as fake_output:
             self.typing.onecmd("update TheWorld")
@@ -158,14 +158,15 @@ class TestConsole(unittest.TestCase):
                              fake_output.getvalue())
         with patch('sys.stdout', new=StringIO()) as fake_output:
             self.typing.onecmd("User.show('123')")
-            self.assertEqual("** class doesn't exist **\n",
+            self.assertEqual("*** Unknown syntax: User\n",
                              fake_output.getvalue())
 
     def test_class_cmd(self):
         """Test cmd output: <class>.<cmd>"""
         with patch('sys.stdout', new=StringIO()) as fake_output:
             self.typing.onecmd("User.count()")
-            self.assertEqual(int, type(eval(fake_output.getvalue())))
+            self.assertEqual(
+                int, type(eval(fake_output.getvalue())), "class doesn't exist")
 
 
 if __name__ == "__main__":
