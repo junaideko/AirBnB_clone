@@ -5,5 +5,9 @@ from models.base_model import BaseModel
 
 
 class Amenity(BaseModel):
-    """class amenity"""
+    """class amenity
+    Attributes:
+        name (str): state name
+    """
+
     name = ""

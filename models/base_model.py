@@ -6,7 +6,6 @@ base class file
 import uuid
 from datetime import datetime
 import models
-# from json import JSONEncoder
 
 
 class BaseModel:
@@ -53,13 +52,3 @@ class BaseModel:
         """return the string formated message when instance is called"""
         clName = self.__class__.__name__
         return "[{}] ({}) {}".format(clName, self.id, self.__dict__)
-
-# class BaseModelEncoder(JSONEncoder):
-#     """JSON Encoder for BaseModel
-#     """
-
-#     def default(self, o):
-#         """ default"""
-#         if isinstance(o, BaseModel):
-#             return o.to_dict()
-#         return super().default(o)

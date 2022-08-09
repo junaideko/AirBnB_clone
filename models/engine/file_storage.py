@@ -14,23 +14,6 @@ from models.amenity import Amenity
 from models.state import State
 
 
-# class Objects(dict):
-#     """class object"""
-
-#     def __getitem__(self, key):
-#         """get item"""
-#         try:
-#             return super(Objects, self).__getitem__(key)
-#         except Exception as e:
-#             raise Exception("** no instance found **")
-
-#     def pop(self, key):
-#         """pop item"""
-#         try:
-#             return super(Objects, self).pop(key)
-#         except Exception as e:
-#             raise Exception("** no instance found **")
-
 class FileStorage:
     """
     serializes instances to a JSON file and
